@@ -1,3 +1,74 @@
+$days : "tue", "wed", "thu", "fri", "sat", "sun";
+
+@mixin day-box {
+  display: none;
+
+  width: 100px;
+  height: 100px;
+
+  box-sizing: border-box;
+  background-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+
+  font-size: 30px;
+  line-height: 100px;
+  text-align: center;
+
+  margin: 0 1px 1px 0;
+
+  transition: background-color 0.5s ease-in-out,
+    transform 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+
+  cursor: pointer;
+
+}
+
 body {
   margin: 0;
+  font-family: "Arial", sans-serif;
+  color: #2e4053;
+}
+
+.title-name {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.calendar {
+  width: 707px;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+
+  & div {
+    @include day-box;
+
+    &:hover {
+      transform: translate(0, -20px);
+      background-color: #ffbfcb;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: none;
+    }
+  }
+}
+
+@for $i from 1 through 31 {
+  .calendar > div:nth-child(#{$i})::after {
+    content: "#{$i}";
+  }
+}
+
+@for $i from 1 through 6 {
+  .calendar-#{nth($days, $i)} div:first-child {
+    margin-left: #{100*$i + 1*$i}px;
+  }
+}
+
+@for $i from 28 through 31 {
+  .calendar-#{$i} div:nth-child(-n+#{$i}) {
+    display: block;
+  }
 }
