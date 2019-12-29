@@ -16,6 +16,7 @@ body {
   flex-wrap: wrap;
   margin: auto;
 }
+
 .calendar div {
   width: 100px;
   height: 100px;
@@ -26,10 +27,13 @@ body {
   line-height: 100px;
   text-align: center;
   margin: 0 1px 1px 0;
-  transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out,
+    transform 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
   cursor: pointer;
   display: none;
 }
+
 .calendar div:hover {
   transform: translate(0, -20px);
   background-color: #ffbfcb;
